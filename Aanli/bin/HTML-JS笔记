@@ -1,0 +1,166 @@
+<link rel="stylesheet" type="text/css" href="header.css" />   //引入CSS文件
+<script type="text/javascript" src="header.js"></script>      //引入JS文件
+
+
+<a target=""></>  //_self:当前业跳转        _blank:另开一个页面跳转
+超链接外网加http://
+锚点连接用法:<a href="#mao"></a> <a name="mao"></a>
+&nbsp;空格
+&quot;双引号
+&lt;小于号
+&gt;大于号
+&copy;版权符
+自定义列表:<dl>	<dt></dt>	<dd></dd>	</dl>
+表格标题<caption></caption>
+colspan: 列合并，被合并的列需要被删除
+rowspan: 行合并，被合并的行需要被删除
+cellspacing:单元格之间的间距
+cellpadding:单元格与内容之间的间距
+form表单:
+method:两种提交方式post和get
+maxlength:最大输入的字符个数
+readonly:是否只读
+disabled:是否禁用
+checked:默认选中
+placeholder:提示语
+flie:文件(可选择本地图片)
+data:数据
+radio:单选框
+checkbox:复选框
+<lable for="id"></lable>一般配合单选多选按钮来用
+select:滚动条
+option:选项
+默认选择是selected="selected"
+
+fameset框架
+<frameset rows="按照百分比进行上下分割" cols="按照百分比进行左右分割">
+<frame src="另一个独立的HTML文件" />
+<frameset/>
+
+CSS:
+text-decoration:下划线
+font-variant: small-caps;(将小写英文字母变成大写，对汉字无效)
+line-height:normal|px;(normal默认行高)
+text-indent: -2em;(首行缩进)
+vertical-align:图片与文字的对齐方式，可以取负数，若想实现精确对齐方式，可以通过具体像素值实现。
+position:relative|absolute;相对定位|绝对定位
+background-position: 500px 200px;  //对背景图片进行绝对定位，取值以原点为参照。
+
+JavaScript:
+大小写转换方法:
+X.toLowerCase();
+X.toUpperCase();
+X.charAt(index);返回指定位置上的字符
+X.charCodeAt(index);返回指定位置上的字符的Unicode编码
+寻找指定的字符串:
+X.indexOf("", );   //返回角标
+X.lastIndexOf("", );   //从后面开始找
+替换子字符串:
+X.replace("findstr","tostr");
+获取子字符串:
+X.substring(strart,[end]);
+
+X.split(bystr,[howmany]);    //拆分字符串
+
+X.replace(regexp,tostr);   //replace:返回替换后的结果
+X.match(regexp);           //match:返回匹配字符串的数组
+X.search(regexp);          //search:返回匹配字符串的首字符的索引
+
+Array对象:
+数组转换成字符串:
+X.join([bystr]);
+X.toString();
+获取子数组:
+X.slice(start,[end]);
+X.reverse();    	   //数组的倒序
+X.sort([sortfunc]);    //数组排序。
+function sortfunc(a,b){
+	return a-b;
+}  
+
+Math对象:
+Math.round();    //四舍五入
+Math.sqrt(x);    //开平方
+toFixed(num)；         //保留小数点后一定位数，同时数值转换成字符串。
+
+RegExp对象的常用方法:
+exec() 方法用于检索字符串中的正则表达式的匹配。该函数返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null。
+RegExpObject.test(string); //如果字符串string中含有与RegExpObject匹配的文本，则返回true，否则返回false。
+RegExpObject.exec(str);    //检索字符串中指定的值，返回找到的值并确定其位置。
+
+Date对象:
+getDate():返回一个数字，代表月份中的某一天。    //setDate修改
+getDay():返回一个数字，代表一星期中的第几天。   //setDay修改
+
+arguments对象:
+arguments对象是一种特殊对象，在函数代码中，表示函数的参数数组。
+
+Function对象:
+使用Function对象创建函数:var test = new Function("a","b","return a+b;");
+匿名函数:
+创建一个匿名函数:
+var func = function(arg1,arg2,..){
+	func_body;
+}
+
+全局函数:
+encodeURI;/decodeURI;(加密解密)
+eval函数用于计算某个字符串，以得到结果，或者用于执行其中的JavaScript代码。
+
+box-shadow: darkgrey 10px 10px 30px 5px;   //设置阴影
+
+
+
+onmouseenter   onmouseleave   //鼠标进入出来的效果
+location.href(跳转页面href可省略不写)
+
+设置字体垂直居中
+div{
+    width:200px;height:200px;  /*设置div的大小*/
+    border:1px solid green;    /*边框*/
+    text-align: center;        /*文字水平居中对齐*/
+    line-height: 200px;        /*设置文字行距等于div的高度*/
+    overflow:hidden;
+}
+
+opacity: 透明度属性取值为0-1 0为完全隐藏
+$("div:hidden").show("normal");   //动态显示
+$("div:visible").hide(800);       //动态隐藏
+
+ul li:nth-chlid(2): 2表示第二个li.  2n表示偶数li
+
+window.onload = func;  //加载函数
+
+/* 360旋转 */
+.contentimg{
+	transition: all 1s ease-in-out//linear ease ;
+}
+.contentimg:hover{
+	transform:rotate(360deg);
+}
+
+/* 图片移动 */
+.content1yidong{
+	position: relative;
+	left: 0px;
+	transition:all .2s;
+}
+.content1yidong:hover{
+	left:-5px;
+}
+
+w:for(var x=0;x<3;x++){
+		for(var y=0;y<4;y++){
+			document.write("x="+x);
+			break w;// 输出 x = 0  break跳出w循环。
+		}
+	}
+
+
+
+
+
+
+
+
+

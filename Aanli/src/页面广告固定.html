@@ -1,0 +1,51 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>页面广告固定</title>
+<style type="text/css">
+
+#a{
+width:180px;
+height:210px;
+}
+</style>
+<script type="text/javascript">
+var isie6 = window.XMLHttpRequest?false:true;
+window.onload = function(){
+	var a = document.getElementById('a');
+	var d = document.getElementById('d');
+	if(isie6){
+		a.style.position = 'absolute';
+        
+		window.onscroll = function(){
+			d.innerHTML = '';
+		}
+	}
+	else{
+		a.style.position = 'fixed';
+	}
+	a.style.right = '0';
+	a.style.bottom = '0';
+}
+function htmlGGNone(){
+	var a = document.getElementById('a');
+	a.style.display = "none";
+}
+
+</script>
+
+</head>
+<body>
+<div  style="width: 1000px; height: 1000px; background-color: red;">
+	
+	<div id='a'>
+		<a href="#"><img src="image/staticGG.png" /></a>
+		<div style="position: absolute; width: 20px; height: 20px;
+			right: 5px; top: 5px; "onclick="htmlGGNone();">
+		</div>
+	</div>
+
+</div>
+<div style="width: 1000px; height: 1000px; background-color: blue;"></div>
+</body>
+</html> 

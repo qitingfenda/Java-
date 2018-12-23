@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>广告轮播</title>
+<style type="text/css">
+#banner{                  /* 广告条 */
+	width: 1920px;
+	height: 425px;
+	position: relative;
+}
+#bannerBut{          /* 按钮条样式 */
+	position: absolute;
+	width: 170px;
+	height: 25px;
+	background-color: gray;
+	bottom: 10px;
+	left: 875px;
+	border-radius: 30px;
+}
+.bannerButSty{         /* 按钮样式 */
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	border: 2px solid white;
+	border-radius: 10px;
+	margin-left: 9px;
+	margin-top: 3px;
+}
+</style>
+<script type="text/javascript">
+var BANNINDEX = 1;
+//调用图片轮播定时器
+var bannTime = setInterval(swiImg,1500);
+
+
+function swiImg(){//图片轮播方法
+BANNINDEX++;
+if(BANNINDEX>5){
+	BANNINDEX = 1;
+}
+var bannerImg = document.getElementById("bannerImg");
+bannerImg.src = "image/bannerimg0"+BANNINDEX+".jpg";
+for(var i = 1;i<=5;i++){
+	var baBu = document.getElementById("baBu"+i);
+	baBu.style.backgroundColor = "";
+}
+var baBu = document.getElementById("baBu"+BANNINDEX);
+baBu.style.backgroundColor = "white";
+}
+function stopBannTime(){//当鼠标放在图片上，图片停止轮播
+clearInterval(bannTime);
+}
+function startBannTime(){//当鼠标离开图片，图片接着轮播
+bannTime = setInterval(swiImg,1500);
+}
+function banButFunc(bannVal,thisObj){//鼠标点击按钮切换到对应的图片并添加白色背景颜色
+var bannerImg = document.getElementById("bannerImg");
+bannerImg.src = "image/bannerimg0"+bannVal+".jpg";
+for(var i = 1;i<=5;i++){
+	var baBu = document.getElementById("baBu"+i);
+	baBu.style.backgroundColor = "";
+}
+thisObj.style.backgroundColor = "white";
+}
+
+</script>
+</head>
+<body>
+	<div id="banner">
+		<div onmouseover="stopBannTime();" onmouseout="startBannTime();">
+			<img src="image/bannerimg01.jpg" id="bannerImg"/>
+		</div>
+				<!-- ------------------------轮播按钮--------------------->
+		<div id="bannerBut" onmouseover="stopBannTime();" onmouseout="startBannTime();">
+			<a id="baBu1" href="#" class="bannerButSty" onclick="banButFunc(1,this);"></a>
+			<a id="baBu2" href="#" class="bannerButSty" onclick="banButFunc(2,this);"></a>
+			<a id="baBu3" href="#" class="bannerButSty" onclick="banButFunc(3,this);"></a>
+			<a id="baBu4" href="#" class="bannerButSty" onclick="banButFunc(4,this);"></a>
+			<a id="baBu5" href="#" class="bannerButSty" onclick="banButFunc(5,this);"></a>
+		</div>
+	</div>
+</body>
+</html>

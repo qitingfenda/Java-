@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>计算机</title>
+<script type="text/javascript">
+var PI = Math.PI;
+var bool = false;
+function test01(T){
+	if(T=="="){
+		var num = document.getElementById("date").value;
+		if(num==""){
+			document.getElementById("date").value = "";
+		}
+		else{
+			document.getElementById("date").value=eval(document.getElementById("date").value);
+			bool = true;
+		}
+	}
+	else if(T=="C"){
+		document.getElementById("date").value = "";
+	}
+	else if(T=="sin"){
+		var num1 = document.getElementById("date").value;
+		document.getElementById("date").value = (eval(Math.sin(num1*PI/180))).toFixed(5);
+	}
+	else if(T=="cos"){
+		var num1 = document.getElementById("date").value;
+		document.getElementById("date").value = (eval(Math.cos(num1*PI/180))).toFixed(5);
+	}
+	else if(T=="sqrt"){
+		var num1 = document.getElementById("date").value;
+		document.getElementById("date").value = (eval(Math.sqrt(num1))).toFixed(5);
+	}
+	else{
+		if(bool){
+			document.getElementById("date").value = T;
+			bool = false;
+		}
+		else{
+			document.getElementById("date").value +=T;
+		}
+	}
+}
+
+</script>
+<style type="text/css">
+.a{
+	
+	width: 212px;
+	margin: 0 auto;
+}
+.a{
+	background-size: 100% 100%;
+	background-image: url("image/bg01.png");
+}
+.a1>input {
+	border:2px solid gray;
+	font-size:20px;
+	color: white;
+	background-color: black;
+	width: 50px;
+	height: 30px;
+	border-radius: 10px;
+	margin-top: 8px;
+}
+</style>
+</head>
+<body>
+<div class="a">
+<input type="text" id="date" readonly="readonly" style="width:208px;height:30px;border-radius: 10px;"><br/>
+	<div class="a1">
+		<input type="button" value="7" onclick="test01(this.value);">
+		<input type="button" value="8" onclick="test01(this.value);">
+		<input type="button" value="9" onclick="test01(this.value);">
+		<input type="button" value="+" onclick="test01('+');"><br/>
+	
+		<input type="button" value="4" onclick="test01(this.value);">
+		<input type="button" value="5" onclick="test01(this.value);">
+		<input type="button" value="6" onclick="test01(this.value);">
+		<input type="button" value="-" onclick="test01('-');"><br/>
+	
+		<input type="button" value="1" onclick="test01(this.value);">
+		<input type="button" value="2" onclick="test01(this.value);">
+		<input type="button" value="3" onclick="test01(this.value);">
+		<input type="button" value="×" onclick="test01('*');"><br/>
+		
+		<input type="button" value="0" onclick="test01(this.value);">
+		<input type="button" value="." onclick="test01(this.value);">
+		<input type="button" value="√" onclick="test01('sqrt');">
+		<input type="button" value="÷" onclick="test01('/');"><br/>
+	
+		<input type="button" value="sin" onclick="test01('sin');">
+		<input type="button" value="cos" onclick="test01('cos');">
+		<input type="button" value="C" onclick="test01('C');">
+		<input type="button" value="=" onclick="test01('=');"><br/>
+	</div>
+</div>
+</body>
+</html>

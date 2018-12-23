@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>手动轮播+自动轮播</title>
+<style type="text/css">
+*{
+	margin: 0px;
+	padding: 0px;
+}
+#inlineBox{
+	width: 200px;
+	height: 200px;
+	background-color: gray;
+	margin: 50px auto;
+	position: relative;
+	overflow: hidden;
+}
+#inlineBox ul{
+	height: 200px;
+	width: 800px;
+	background-color: red;
+	position: absolute;
+	left: 0px;
+}
+#inlineBox ul li{
+	height: 200px;
+	width: 200px;
+	background-color: blue;
+	float: left;
+	list-style: none;
+}
+#inlineBox ul li:nth-child(2n){
+	height: 200px;
+	width: 200px;
+	background-color: green;
+}
+#divBut1{
+	height: 100px;
+	width: 50px;
+	position: absolute;
+	top: 50px;
+	left: 0px;
+	background-color: yellow;
+	display: inline;
+}
+#divBut2{
+	height: 100px;
+	width: 50px;
+	position: absolute;
+	top: 50px;
+	right: 0px;
+	background-color: yellow;
+	display: inline;
+}
+</style>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+
+var funcZDTime = setInterval(funcZD,5000);
+
+var timeZD;
+function funcZD(){
+	clearInterval(funcZDTime);
+	timeZD = setInterval(funcZDTime2,10);
+}
+function funcZDTime2(){
+	var divBut1 = document.getElementById("divBut1");
+	var divBut2 = document.getElementById("divBut2");
+	divBut1.style.display = "none";
+	divBut2.style.display = "none";
+	var inlineBox = document.getElementById("inlineBox");
+	if(inlineBox.scrollLeft<200&&i==1){
+		inlineBox.scrollLeft += 5;
+		if(inlineBox.scrollLeft == 200){
+			i = 2;
+			inlineBox.scrollLeft = 195;
+			divBut1.style.display = "inline";
+			divBut2.style.display = "inline";
+			clearInterval(timeZD);
+			funcZDTime = setInterval(funcZD,5000);
+		}
+	}
+	if(inlineBox.scrollLeft<400&&i==2){
+		inlineBox.scrollLeft += 5;
+		if(inlineBox.scrollLeft == 400){
+			i = 1;
+			inlineBox.scrollLeft = 0;
+			divBut1.style.display = "inline";
+			divBut2.style.display = "inline";
+			clearInterval(timeZD);
+			funcZDTime = setInterval(funcZD,5000);
+		}
+	}
+}
+
+/* ------------------------------------- */
+var i = 1;
+var time01;
+function func01(){
+	time01 = setInterval(funcLeft,10);
+}
+function funcLeft(){
+	
+	clearInterval(funcZDTime);//清除自动轮播
+	
+	var divBut1 = document.getElementById("divBut1");
+	var divBut2 = document.getElementById("divBut2");
+	divBut1.style.display = "none";
+	divBut2.style.display = "none";
+	var inlineBox = document.getElementById("inlineBox");
+	if(inlineBox.scrollLeft<200&&i==1){
+		inlineBox.scrollLeft += 5;
+		if(inlineBox.scrollLeft == 200){
+			i = 2;
+			inlineBox.scrollLeft = 195;
+			divBut1.style.display = "inline";
+			divBut2.style.display = "inline";
+			
+			
+			clearInterval(time01);
+			funcZDTime = setInterval(funcZD,5000);//重新调用自动轮播
+		}
+	}
+	if(inlineBox.scrollLeft<400&&i==2){
+		inlineBox.scrollLeft += 5;
+		if(inlineBox.scrollLeft == 400){
+			i = 1;
+			inlineBox.scrollLeft = 0;
+			divBut1.style.display = "inline";
+			divBut2.style.display = "inline";
+			
+			
+			clearInterval(time01);
+			funcZDTime = setInterval(funcZD,5000);//重新调用自动轮播
+		}
+	}
+}
+function func02(){
+	time01 = setInterval(funcRight,10);
+}
+function funcRight(){
+	
+	clearInterval(funcZDTime);//清除自动轮播
+	
+	var divBut1 = document.getElementById("divBut1");
+	var divBut2 = document.getElementById("divBut2");
+	divBut1.style.display = "none";
+	divBut2.style.display = "none";
+	var inlineBox = document.getElementById("inlineBox");
+	if(inlineBox.scrollLeft==0){
+		inlineBox.scrollLeft = 400;
+		i = 3;
+	}
+	if(inlineBox.scrollLeft>200&&i==3){
+		inlineBox.scrollLeft -= 5;
+		if(inlineBox.scrollLeft==200){
+			i = 2;
+			inlineBox.scrollLeft = 205;
+			divBut1.style.display = "inline";
+			divBut2.style.display = "inline";
+			
+			
+			clearInterval(time01);
+			funcZDTime = setInterval(funcZD,5000);//重新调用自动轮播
+		}
+	}
+	if(inlineBox.scrollLeft>0&&i==2){
+		inlineBox.scrollLeft -= 5;
+		if(inlineBox.scrollLeft==0){
+			i = 1;
+			inlineBox.scrollLeft = 0;
+			divBut1.style.display = "inline";
+			divBut2.style.display = "inline";
+			
+			
+			clearInterval(time01);
+			funcZDTime = setInterval(funcZD,7000);//重新调用自动轮播
+		}
+	}
+}
+
+</script>
+
+</head>
+<body>
+<div style="position: relative; width: 200px;height: 200px;margin: auto;">
+	<div id="inlineBox">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div id="divBut1" onclick="func01();"></div>
+	<div id="divBut2" onclick="func02();"></div>
+</div>
+</body>
+							
+</html>

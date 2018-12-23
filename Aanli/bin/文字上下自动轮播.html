@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>上下自动轮播</title>
+<style type="text/css">
+#searchbot{
+	height:16px;
+	overflow: hidden;
+}
+</style>
+
+<script type="text/javascript">
+function test01(){
+	var main = document.getElementById("searchbot");	
+	if(main.scrollTop==16||main.scrollTop==33){
+		clearInterval(timer);
+		setTimeout(function(){timer = setInterval("test01()",10);},8000);
+		main.scrollTop += 1;
+	}else if(main.scrollTop<34){		
+		main.scrollTop += 1;
+	}else{
+		main.scrollTop=0;
+	}
+}
+
+</script>
+</head>
+<body>
+<div id="searchbot">
+	<p>【融合宽带】月租28元享宽带	49元全国流量不限量	9元/月预存30得60	【单宽新装】送ITV</p>
+	<p>九元卡		靓号		智能</p>
+	<p>【融合宽带】月租28元享宽带	49元全国流量不限量	9元/月预存30得60	【单宽新装】送ITV</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>图片旋转移动</title>
+<script type="text/javascript">
+
+</script>
+
+<style type="text/css">
+/* 360旋转 */
+#box{
+	height: 500px;
+	width: 500px;
+	margin: auto;
+	background-color: orange;
+}
+#box>div{
+	margin-top: 50px;
+}
+#img01{
+	transition: all 1s ease-in-out;
+}
+#img02{
+	transition: all 1s ease-in-out;
+}
+#img01:hover{
+	transform:rotate(360deg);
+}
+#img02:hover{
+	transform:rotate(360deg);
+}
+#img03{
+	position: relative;
+	left: 10px;
+	transition:all .2s;
+}
+#img03:hover{
+	left:5px;
+}
+
+</style>
+</head>
+<body>
+<div id="box">
+	<div style="width: 50px; height: 100px; margin: auto; ">
+		<img id="img01" src="image/main03left01.png" />
+	</div>
+	
+	<div style="width: 50px; height: 100px; margin: auto;">
+		<img id="img02" src="image/main03left02.png" />
+	</div>
+	
+	<div style="width: 140px; height: 200px; margin: auto;">
+		<img id="img03" src="image/main03left03.png" />
+	</div>
+</div>
+</body>
+</html>

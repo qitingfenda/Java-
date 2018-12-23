@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>二级菜单</title>
+
+<script type="text/javascript">
+var BANNINDEX = 1;
+//调用图片轮播定时器
+var bannTime = setInterval(swiImg,1500);
+
+
+function swiImg(){//图片轮播方法
+BANNINDEX++;
+if(BANNINDEX>5){
+	BANNINDEX = 1;
+}
+var bannerImg = document.getElementById("bannerImg");
+bannerImg.src = "image/bannerimg0"+BANNINDEX+".jpg";
+for(var i = 1;i<=5;i++){
+	var baBu = document.getElementById("baBu"+i);
+	baBu.style.backgroundColor = "";
+}
+var baBu = document.getElementById("baBu"+BANNINDEX);
+baBu.style.backgroundColor = "white";
+}
+function stopBannTime(){//当鼠标放在图片上，图片停止轮播
+clearInterval(bannTime);
+}
+function startBannTime(){//当鼠标离开图片，图片接着轮播
+bannTime = setInterval(swiImg,1500);
+}
+function banButFunc(bannVal,thisObj){//鼠标点击按钮切换到对应的图片并添加白色背景颜色
+var bannerImg = document.getElementById("bannerImg");
+bannerImg.src = "image/bannerimg0"+bannVal+".jpg";
+for(var i = 1;i<=5;i++){
+	var baBu = document.getElementById("baBu"+i);
+	baBu.style.backgroundColor = "";
+}
+thisObj.style.backgroundColor = "white";
+}
+/* --------------鼠标移到二级菜单显示的内容-------------- */
+function bannInlineUl(thisObj,num){
+	var bannNoneImg = document.getElementById("bannNoneImg0"+num);
+	var bannNone = document.getElementById("bannNone0"+num);
+	bannNoneImg.style.display="none";
+	bannNone.style.display="inline";
+}
+function bannInNoneUl(thisObj,num){
+	var bannNoneImg = document.getElementById("bannNoneImg0"+num);
+	var bannNone = document.getElementById("bannNone0"+num);
+	bannNoneImg.style.display="inline";
+	bannNone.style.display="none";
+}
+</script>
+
+<style type="text/css">
+*{
+	margin: 0px;
+	padding: 0px;
+}
+#banner{                  /* 广告条 */
+	width: 1920px;
+	height: 425px;
+	position: relative;
+}
+#bannerBut{          /* 按钮条样式 */
+	position: absolute;
+	width: 170px;
+	height: 25px;
+	background-color: gray;
+	bottom: 10px;
+	left: 875px;
+	border-radius: 30px;
+}
+.bannerButSty{         /* 按钮样式 */
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	border: 2px solid white;
+	border-radius: 10px;
+	margin-left: 9px;
+	margin-top: 3px;
+}
+#bannerUl{  /* 二级菜单的整体样式 */
+	height: 420px;
+	width: 190px;
+	background-color: white;
+	font-size: 20px;
+	color: #777777;
+}
+#bannerUl>li{/* 二级菜单的7个选项样式 */
+	height: 60px;
+	width: 190px;
+	list-style: none;
+	border-bottom: 1px solid #E8E8E8;
+}
+#bannerUl>li>ul {/* 二级菜单的每一项的样式 */
+	height: 60px;
+	width: 190px;
+}
+#bannerUl>li>ul>li { 
+	list-style: none;
+	float: left;
+}
+#bannerUl>li>ul>li:nth-child(2n) {/* 二级菜单的每项内容的字体占的宽度 */
+	width: 110px;
+	margin-top: 20px;
+}
+#bannerUl>li>ul>ul {        /* 二级每项内容浮动 */
+	position: absolute;
+	top: 0px;
+	left: 190px;
+	display: none;
+	font-size: 14px;
+	color: #777777;
+}
+#bannerUl>li>ul>ul>li{
+	list-style: none;
+	height: 50px;
+	width: 500px;
+	margin: auto;
+	border-bottom: 1px solid #E8E8E8;
+}
+#bannNone01 li{   /* 二级菜单手机内容的样式 */
+	list-style: none;
+	float: left;
+	line-height: 50px;
+}
+#bannNone01>li>ul li:hover{
+	color:#FF8201;
+}
+.bannTitle{
+	font-weight: bolder;
+	width: 70px;
+}
+#bannNone02 li{/* 二级菜单   靓号/套餐   内容的样式 */
+	list-style: none;
+}
+#bannLH01>li{
+	float: left;
+	line-height: 50px;
+}
+</style>
+
+</head>
+<body>
+	<div id="banner">
+		<div onmouseover="stopBannTime();" onmouseout="startBannTime();">
+			<img src="image/bannerimg01.jpg" id="bannerImg"/>
+		</div>
+				<!-- ------------------------轮播按钮--------------------->
+		<div id="bannerBut" onmouseover="stopBannTime();" onmouseout="startBannTime();">
+			<a id="baBu1" href="#" class="bannerButSty" onclick="banButFunc(1,this);"></a>
+			<a id="baBu2" href="#" class="bannerButSty" onclick="banButFunc(2,this);"></a>
+			<a id="baBu3" href="#" class="bannerButSty" onclick="banButFunc(3,this);"></a>
+			<a id="baBu4" href="#" class="bannerButSty" onclick="banButFunc(4,this);"></a>
+			<a id="baBu5" href="#" class="bannerButSty" onclick="banButFunc(5,this);"></a>
+		</div>
+		
+		<!-- -------------二级菜单------------- -->
+		<div id="bannerGGLeft" style="position: absolute;left: 360px;top: 0px;
+		 width: 190px; height: 420px;">
+			<ul id="bannerUl">
+				<!-- ------------------手机----------------- -->
+				<li>
+					<ul onmouseover="bannInlineUl(this,1)" onmouseout="bannInNoneUl(this,1)">
+						<li><img src="image/ejcd/bannerleft01.png" style="margin-top: 10px;
+						margin-left: 10px; margin-right: 10px;" /></li>
+						<li>手机</li>
+						<li><img id="bannNoneImg01" src="image/ejcd/bannerleft.png" style="margin-top: 25px;" /></li>
+						<ul id="bannNone01" style="width: 600px;height: 420px;background-color: white;">
+							<!-- <li>
+								<ul>
+									<li class="bannTitle" style="color: #777777;">新品</li>
+									<li>iphohe&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>红米5A&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>nova2s&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>畅享7S&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>iphone8&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li class="bannTitle" style="color: #777777;">特价</li>
+									<li>iphone7&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>小海豚pro&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>E133X&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>红米5plus&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>畅玩7X&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li class="bannTitle" style="color: #777777;">品牌</li>
+									<li>苹果&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>华为&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>三星&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>魅族&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>小米&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>OPPO&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>VIVO&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li class="bannTitle" style="color: #777777;">价格</li>
+									<li>1000元以下&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>1000元&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>2000元&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>3000元&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>4000元以上&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li class="bannTitle" style="color: #777777;">系统</li>
+									<li>其他系统&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>安卓&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>IOS&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li class="bannTitle" style="color: #777777;">屏幕尺寸</li>
+									<li>3.0英寸及以下&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>3.1-4.5英寸&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>4.6-5.0英寸&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>5.1-5.5英寸&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li class="bannTitle" style="color: #777777;">类型</li>
+								</ul>
+							</li> -->
+						</ul>
+					</ul>
+				</li>
+				<!-- ------------------靓号/套餐------------- -->
+				<li>
+					<ul onmouseover="bannInlineUl(this,2)" onmouseout="bannInNoneUl(this,2)">
+						<li><img src="image/ejcd/bannerleft02.png" style="margin-top: 10px;
+						margin-left: 10px; margin-right: 10px;" /></li>
+						<li>靓号/套餐</li>
+						<li><img id="bannNoneImg02" src="image/ejcd/bannerleft.png" style="margin-top: 25px;" /></li>
+						<ul id="bannNone02" style="width: 600px;height: 560px;background-color: blue;">
+							<!-- <li>
+								<ul id="bannLH01">
+									<li class="bannTitle" style="color: #777777;width: 50px;">号码</li>
+									<li>199&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>173&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>189&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>177&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>181&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>180&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>133&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>153&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+								</ul>
+							</li>
+							<li>
+								<ul id="bannLH02">
+									<li>套餐</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li class="bannTitle" style="color: #777777;">品牌</li>
+									<li>苹果&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>华为&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>三星&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>魅族&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>小米&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>OPPO&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+									<li>VIVO&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+								</ul>
+							</li> -->
+						</ul>
+					</ul>
+				</li>
+				<!-- ------------------宽带----------------- -->
+				<li>
+					<ul onmouseover="bannInlineUl(this,3)" onmouseout="bannInNoneUl(this,3)">
+						<li><img src="image/ejcd/bannerleft03.png" style="margin-top: 10px;
+						margin-left: 10px; margin-right: 10px;" /></li>
+						<li>宽带</li>
+						<li><img id="bannNoneImg03" src="image/ejcd/bannerleft.png" style="margin-top: 25px;" /></li>
+						<ul id="bannNone03" style="width: 600px;height: 610px;background-color: green;">
+							
+						</ul>
+					</ul>
+				</li>
+				<!-- ------------------智能----------------- -->
+				<li>
+					<ul onmouseover="bannInlineUl(this,4)" onmouseout="bannInNoneUl(this,4)">
+						<li><img src="image/ejcd/bannerleft04.png" style="margin-top: 10px;
+						margin-left: 10px; margin-right: 10px;" /></li>
+						<li>智能</li>
+						<li><img id="bannNoneImg04" src="image/ejcd/bannerleft.png" style="margin-top: 25px;" /></li>
+						<ul id="bannNone04" style="width: 600px;height: 420px;background-color: yellow;">
+							
+						</ul>
+					</ul>
+				</li>
+				<!-- ------------------话费----------------- -->
+				<li>
+					<ul onmouseover="bannInlineUl(this,5)" onmouseout="bannInNoneUl(this,5)">
+						<li><img src="image/ejcd/bannerleft05.png" style="margin-top: 10px;
+						margin-left: 10px; margin-right: 10px;" /></li>
+						<li>话费</li>
+						<li><img id="bannNoneImg05" src="image/ejcd/bannerleft.png" style="margin-top: 25px;" /></li>
+						<ul id="bannNone05" style="width: 600px;height: 420px;background-color: gray;">
+							
+						</ul>
+					</ul>
+				</li>
+				<!-- ------------------费用----------------- -->
+				<li>
+					<ul onmouseover="bannInlineUl(this,6)" onmouseout="bannInNoneUl(this,6)">
+						<li><img src="image/ejcd/bannerleft06.png" style="margin-top: 10px;
+						margin-left: 10px; margin-right: 10px;" /></li>
+						<li>费用</li>
+						<li><img id="bannNoneImg06" src="image/ejcd/bannerleft.png" style="margin-top: 25px;" /></li>
+						<ul id="bannNone06" style="width: 600px;height: 420px;background-color: black;">
+							
+						</ul>
+					</ul>
+				</li>
+				<!-- ------------------业务----------------- -->
+				<li style="border: none;">
+					<ul onmouseover="bannInlineUl(this,7)" onmouseout="bannInNoneUl(this,7)">
+						<li><img src="image/ejcd/bannerleft07.png" style="margin-top: 10px;
+						margin-left: 10px; margin-right: 10px;" /></li>
+						<li>业务</li>
+						<li><img id="bannNoneImg07" src="image/ejcd/bannerleft.png" style="margin-top: 25px;" /></li>
+						<ul id="bannNone07" style="width: 600px;height: 680px;background-color: orange;">
+							
+						</ul>
+					</ul>
+				</li>
+			</ul>
+			
+		</div>
+		
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>文字无缝滚动</title>
+<style type="text/css">
+#head3rightdiv9con{
+width:2200px;
+height:50px;
+}
+#head3rightdiv9main{
+width:120px;
+height:20px;
+overflow:hidden;
+margin-top:7px;
+}
+.head3rightdiv9content{
+float:left;
+width:1100px;
+height:50px;
+}
+.head3rightdiv9content a{
+text-decoration: none;
+color:black;
+}
+
+</style>
+<script type="text/javascript">
+var timer1;
+function myMarquee(){
+	var main=document.getElementById("head3rightdiv9main");
+	if(main.scrollLeft<1100){
+		main.scrollLeft +=10;
+	}else{
+		main.scrollLeft =0;
+	}
+}
+timer1=setInterval("myMarquee()",200);
+function head3rightdiv9test(){
+	clearInterval(timer1);
+}
+function head3rightdiv9end(){
+	timer1=setInterval("myMarquee()",100);
+}
+
+</script>
+
+</head>
+<body>
+<div id="head3rightdiv9main">
+	<div id="head3rightdiv9con">
+		<div class="head3rightdiv9content" onmouseout="head3rightdiv9test();" onmouseleave="head3rightdiv9end();">
+			<a href="#">关于中国电信取消国内手机长途和漫游通话费的公告</a>
+			<a href="#">天翼安全中心APP产品介绍 关于江西电信网上营业厅银行卡充值活动的通知 </a>
+			<a href="#">中国电信江西公司用户个人信息保护政策</a>
+			<a href="#">关于爱看4G、爱听4G和爱玩4G流量包停止赠送的公告 </a>
+		</div>
+		<div class="head3rightdiv9content">
+			<a href="#">关于中国电信取消国内手机长途和漫游通话费的公告</a>
+			<a href="#">天翼安全中心APP产品介绍 关于江西电信网上营业厅银行卡充值活动的通知 </a>
+			<a href="#">中国电信江西公司用户个人信息保护政策</a>
+			<a href="#">关于爱看4G、爱听4G和爱玩4G流量包停止赠送的公告 </a>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
